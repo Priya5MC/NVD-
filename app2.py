@@ -23,8 +23,7 @@ def show_output():
 
     if st.button("Back"):
         st.session_state.page = "home"
-    elif st.button("cve/id"):    
-        st.session_state.page = "home"
+    
 
 # Main function to control the navigation
 def main():
