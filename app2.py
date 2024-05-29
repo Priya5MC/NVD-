@@ -1,4 +1,4 @@
-import streamlit as st
+ import streamlit as st
 import pandas as pd
 
 # Sample DataFrame
@@ -22,6 +22,8 @@ def show_output():
     st.dataframe(df.iloc[:5, :5])
 
     if st.button("Back"):
+        st.session_state.page = "home"
+    elif st.button("cve/id"):    
         st.session_state.page = "home"
 
 # Main function to control the navigation
