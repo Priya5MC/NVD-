@@ -34,8 +34,8 @@ def show_output2(selected_columns):
     if not selected_columns:
         st.write("No columns selected.")
     else:
-        st.write("First 2 rows of the selected columns of the DataFrame:")
-        st.write('cve/descriptions/0/value' ,'cve/metrics/cvssMetricV2/0/cvssData/vectorString',	
+         
+        st.write(cve/descriptions/0/value' ,'cve/metrics/cvssMetricV2/0/cvssData/vectorString,	
         'cve/metrics/cvssMetricV2/0/cvssData/accessVector',	
         'cve/metrics/cvssMetricV2/0/cvssData/accessComplexity',	
         'cve/metrics/cvssMetricV2/0/cvssData/authentication',	
