@@ -21,23 +21,35 @@ def main():
         # Get the details of the selected row
         selected_row = data.iloc[selected_index]
         st.write('## Additional Details')
+    
+  
 
-        data = {
-    "ID": [1, 2, 3],
-    "Names": [["Alice", "Bob"], ["Charlie", "David"], ["Eve", "Frank"]]
-      }
+# Sample data
+    data = {
+        "ID": [1, 2, 3],
+        "Name": ["Alice", "Bob", "Charlie"]
+    }
+    df = pd.DataFrame(data)
 
-# Configure the list column
-    list_column_config = st.column_config.ListColumn(
-        label="Names",
-        help="List of names associated with each ID"
-     )
+# Display the dataframe
+    st.write("Click on a row to navigate to the details page:")
 
-# Display the dataframe with the configured list column
-    st.dataframe(data, column_config={"Names": list_column_config})  
- 
-       
-         
+# Use st.dataframe or st.table to display the table
+    st.table(df)
+
+# JavaScript to capture row click and navigate to a new page with the ID as a query parameter
+    st.markdown("""
+        <script>
+        const table = window.parent.document.querySelector('table');
+        table.addEventListener('click', (event) => {
+            const cell = event.target;
+            const row = cell.parentElement;
+            const id = row.children[0].innerText;
+            window.location.href = `?page=details&id=${id}`;
+        });
+        </script>
+    """, unsafe_allow_html=True)
+
 
 if __name__=='__main__':
         main()
