@@ -35,8 +35,28 @@ def show_output2(selected_columns):
         st.write("No columns selected.")
     else:
         st.write("First 2 rows of the selected columns of the DataFrame:")
-        st.dataframe(df[selected_columns].head(2))
+        st.write('cve/descriptions/0/value' ,'cve/metrics/cvssMetricV2/0/cvssData/vectorString',	
+        'cve/metrics/cvssMetricV2/0/cvssData/accessVector',	
+        'cve/metrics/cvssMetricV2/0/cvssData/accessComplexity',	
+        'cve/metrics/cvssMetricV2/0/cvssData/authentication',	
+        'cve/metrics/cvssMetricV2/0/cvssData/confidentialityImpact',	
+        'cve/metrics/cvssMetricV2/0/cvssData/integrityImpact',	
+        'cve/metrics/cvssMetricV2/0/cvssData/availabilityImpact',	
+        'cve/metrics/cvssMetricV2/0/cvssData/baseScore',	
+        'cve/metrics/cvssMetricV2/0/baseSeverity',	
+        'cve/metrics/cvssMetricV2/0/exploitabilityScore',	
+        'cve/metrics/cvssMetricV2/0/impactScore',
+        'cve/configurations/0/nodes/0/cpeMatch/0/vulnerable',	
+        'cve/configurations/0/nodes/0/cpeMatch/0/criteria',	
+        'cve/configurations/0/nodes/0/cpeMatch/0/matchCriteriaId',
+        'cve/configurations/0/nodes/0/cpeMatch/1/vulnerable',	
+        'cve/configurations/0/nodes/0/cpeMatch/1/criteria',	
+        'cve/configurations/0/nodes/0/cpeMatch/1/matchCriteriaId',
+        'cve/configurations/0/nodes/0/cpeMatch/2/vulnerable',	
+        'cve/configurations/0/nodes/0/cpeMatch/2/criteria',	
+        'cve/configurations/0/nodes/0/cpeMatch/2/matchCriteriaId')
 
+                 
     if st.button("Back"):
         st.session_state.page = "output"
 
