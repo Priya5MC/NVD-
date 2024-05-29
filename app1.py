@@ -2,7 +2,6 @@ import numpy as np
 import pandas as pd
 import streamlit as st
  
-
 def main():
     st.title('NVD')
     html_tmp = """
@@ -23,32 +22,51 @@ def main():
         st.write('## Additional Details')
     
   
+# Initialize session state
+    if 'page' not in st.session_state:
+        st.session_state.page = 'main'
 
-# Sample data
+# Navigation function
+    def navigate_to(page):
+        st.session_state.page = page
+
+# Main Page content
+    def main_page():
+        st.title("Main Page")
+    
+    # Example data
     data = {
-        "ID": [1, 2, 3],
-        "Name": ["Alice", "Bob", "Charlie"]
+        "Item 1": "Detail of Item 1",
+        "Item 2": "Detail of Item 2",
+        "Item 3": "Detail of Item 3",
     }
-    df = pd.DataFrame(data)
+    
+    # Display clickable items
+    for item, detail in data.items():
+        if st.button(item):
+            st.session_state.selected_item = item
+            st.session_state.detail = detail
+            navigate_to('detail')
+            st.experimental_rerun()
 
-# Display the dataframe
-    st.write("Click on a row to navigate to the details page:")
+# Detail Page content
+def detail_page():
+    st.title("Detail Page")
+    
+    # Display details
+    st.write(f"Details of {st.session_state.selected_item}:")
+    st.write(st.session_state.detail)
+    
+    # Button to go back to the main page
+    if st.button("Go Back"):
+        navigate_to('main')
+        st.experimental_rerun()
 
-# Use st.dataframe or st.table to display the table
-    st.table(df)
-
-# JavaScript to capture row click and navigate to a new page with the ID as a query parameter
-    st.markdown("""
-        <script>
-        const table = window.parent.document.querySelector('table');
-        table.addEventListener('click', (event) => {
-            const cell = event.target;
-            const row = cell.parentElement;
-            const id = row.children[0].innerText;
-            window.location.href = `?page=details&id=${id}`;
-        });
-        </script>
-    """, unsafe_allow_html=True)
+# Page routing
+    if st.session_state.page == 'main':
+        main_page()
+    elif st.session_state.page == 'detail':
+        detail_page()
 
 
 if __name__=='__main__':
